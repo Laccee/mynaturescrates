@@ -1,28 +1,46 @@
 <template>
-    <div>
-      <h2>Upload Your Content</h2>
-      <input type="file" @change="uploadVideo" />
-    </div>
-  </template>
-  
-  <script>
-  import videoUploadService from '../services/videoUpload';
-  
-  export default {
-    name: 'VideoUpload',
-    methods: {
-      async uploadVideo(event) {
-        const file = event.target.files[0];
-        if (file) {
-          await videoUploadService.upload(file);
-          alert('Video uploaded successfully!');
-        }
+  <section class="video-upload">
+    <h2>Upload Your Video</h2>
+    <input type="file" @change="handleFileUpload" />
+    <button @click="uploadVideo">Upload</button>
+  </section>
+</template>
+
+<script>
+import { uploadVideo } from '@/services/videoUpload';
+
+export default {
+  data() {
+    return {
+      selectedFile: null,
+    };
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    async uploadVideo() {
+      try {
+        const downloadURL = await uploadVideo(this.selectedFile);
+        console.log('Video uploaded successfully:', downloadURL);
+      } catch (error) {
+        console.error('Video upload failed:', error);
       }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  /* Add styles specific to the VideoUpload component here */
-  </style>
-  
+    },
+  },
+};
+</script>
+
+<style scoped>
+.video-upload {
+  padding: 50px;
+  text-align: center;
+}
+button {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+</style>

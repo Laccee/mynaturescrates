@@ -1,39 +1,55 @@
 <template>
-    <div>
-      <h2>Group Chat</h2>
-      <div v-for="message in messages" :key="message.id">
-        <p>{{ message.text }}</p>
+  <section class="chat">
+    <h2>Group Chat</h2>
+    <div class="chat-messages">
+      <div v-for="message in messages" :key="message.id" class="message">
+        <strong>{{ message.username }}:</strong> {{ message.text }}
       </div>
-      <input v-model="newMessage" @keyup.enter="sendMessage" />
     </div>
-  </template>
-  
-  <script>
-  import chatService from '../services/chat';
-  
-  export default {
-    name: 'ChatComponent',
-    data() {
-      return {
-        messages: [],
-        newMessage: ''
-      };
+    <input type="text" v-model="newMessage" @keyup.enter="sendMessage" />
+  </section>
+</template>
+
+<script>
+import { sendMessage, fetchMessages } from '@/services/chat';
+
+export default {
+  data() {
+    return {
+      messages: [],
+      newMessage: '',
+    };
+  },
+  mounted() {
+    this.loadMessages();
+  },
+  methods: {
+    async loadMessages() {
+      this.messages = await fetchMessages();
     },
-    methods: {
-      async sendMessage() {
-        if (this.newMessage.trim()) {
-          await chatService.send(this.newMessage);
-          this.newMessage = '';
-        }
+    async sendMessage() {
+      if (this.newMessage.trim()) {
+        await sendMessage(this.newMessage);
+        this.newMessage = '';
+        this.loadMessages();
       }
     },
-    async created() {
-      this.messages = await chatService.fetchMessages();
-    }
-  }
-  </script>
-  
-  <style scoped>
-  /* Add styles specific to the ChatComponent here */
-  </style>
-  
+  },
+};
+</script>
+
+<style scoped>
+.chat {
+  padding: 50px;
+}
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+.message {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+</style>

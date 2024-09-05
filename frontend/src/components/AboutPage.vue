@@ -1,9 +1,9 @@
 <template>
-    <div>
-      <h2>About Us</h2>
-      <p>{{ aboutInfo }}</p>
-    </div>
-  </template>
+  <section class="about-page">
+    <h1>About Nature's Crate</h1>
+    <p>We focus on eco-friendly products that promote health and sustainability.</p>
+  </section>
+</template>
   
   <script>
   import { getAboutInfo } from '../services/api.js';
@@ -32,6 +32,9 @@
   </script>
   
   <style scoped>
-  /* Add styles specific to the AboutPage component here */
+  .about-page {
+    text-align: center;
+    padding: 100px 20px;
+  }
   </style>
   
