@@ -9,7 +9,7 @@
   import { getAboutInfo } from '../services/api.js';
   
   export default {
-    name: 'AboutPage',
+    name: 'AboutPageVue',
     data() {
       return {
         aboutInfo: ''

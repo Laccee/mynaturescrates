@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Welcome to Nature\'s Crates</h2>
+      <h2>Welcome to Nature's Crates</h2>
       <p>Your source for eco-friendly products and sustainable solutions.</p>
     </div>
   </template>
