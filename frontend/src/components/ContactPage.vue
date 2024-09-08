@@ -21,12 +21,14 @@
 
 <script>
 export default {
+ name: 'ContactPage',  
   data() {
     return {
       name: '',
       email: '',
       message: '',
     };
+
   },
   methods: {
     sendContactForm() {

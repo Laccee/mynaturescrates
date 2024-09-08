@@ -21,7 +21,7 @@
 <script>
 // Import the Firebase functions and components
 import { onAuthStateChanged } from 'firebase/auth'; 
-import { auth } from '@/firebase'; // Assuming you have Firebase configured in 'firebase.js'
+import { auth } from '@/firebaseConfig'; // Assuming you have Firebase configured in 'firebase.js'
 import { mapState, mapActions } from 'vuex'; // Import Vuex helpers
 
 import AppHeader from '@/components/Header.vue';

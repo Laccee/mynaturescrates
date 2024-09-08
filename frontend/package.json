@@ -14,7 +14,7 @@
     "firebase": "^10.13.1",
     "vue": "^3.5.2",
     "vue-router": "^4.4.3",
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -26,11 +26,11 @@
     "@vue/cli-plugin-eslint": "^5.0.0",
     "@vue/cli-service": "^5.0.0",
     "@vue/compiler-sfc": "^3.5.2",
+    "babel-jest": "^27.0.6",
     "eslint": "^8.40.0",
     "eslint-plugin-vue": "^9.8.1",
     "jest": "^27.0.6",
-    "vue-jest": "^5.0.0-alpha.10",
-    "babel-jest": "^27.0.6"
+    "vue-jest": "^5.0.0-alpha.10"
   },
   "jest": {
     "moduleFileExtensions": [

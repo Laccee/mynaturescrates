@@ -30,3 +30,5 @@ backend/.env
 .DS_Store
 node_modules
 
+/backend/ai/firebase-adminsdk.json
+/frontend/firebase.js

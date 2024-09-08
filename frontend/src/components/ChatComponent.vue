@@ -14,11 +14,13 @@
 import { sendMessage, fetchMessages } from '@/services/chat';
 
 export default {
-  data() {
-    return {
-      messages: [],
-      newMessage: '',
+   name: 'ChatComponent',  
+   data() {
+   return {
+    messages: [],
+    newMessage: '',
     };
+
   },
   mounted() {
     this.loadMessages();
