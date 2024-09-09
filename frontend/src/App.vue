@@ -1,4 +1,4 @@
-<template>
+
   <div id="app">
     <!-- Show a loading spinner until Firebase authentication is initialized -->
     <div v-if="!isFirebaseReady" class="loading">
@@ -14,8 +14,7 @@
 
       <!-- Footer -->
       <AppFooter />
-    </div>
-  </div>
+    </div>   
 </template>
 
 <script>
