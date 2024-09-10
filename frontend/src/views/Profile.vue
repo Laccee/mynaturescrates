@@ -13,7 +13,7 @@
   
   <script>
   import AppHeader from '@/components/Header.vue';
-  import AppFooter from '@/components/Footer.vue';
+  import AppFooter from '@/components/AppFooter.vue';
   import { mapState } from 'vuex';
   
   export default {

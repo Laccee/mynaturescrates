@@ -25,7 +25,7 @@
   
   <script>
   import AppHeader from '@/components/Header.vue';
-  import AppFooter from '@/components/Footer.vue';
+  import AppFooter from '@/components/AppFooter.vue';
   
   export default {
     name: 'ContactView',

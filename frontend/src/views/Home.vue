@@ -13,7 +13,7 @@
   
   <script>
   import AppHeader from '@/components/Header.vue';
-  import AppFooter from '@/components/Footer.vue';
+  import AppFooter from '@/components/AppFooter.vue';
   import ProductSearch from '@/components/ProductSearch.vue';
   import RealTimeContent from '@/components/RealTimeContent.vue';
   

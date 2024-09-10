@@ -8,7 +8,7 @@ module.exports = defineConfig({
   assetsDir: 'static',
 
   devServer: {
-    proxy: 'http://localhost:3000', // Adjust this to your backend server's URL
+    proxy: 'http://127.0.0.1:5000', // Adjust this to your backend server's URL
     port: 8080,
     open: true
   },

@@ -1,4 +1,4 @@
-
+<template>
   <div id="app">
     <!-- Show a loading spinner until Firebase authentication is initialized -->
     <div v-if="!isFirebaseReady" class="loading">
@@ -13,45 +13,44 @@
       <router-view />
 
       <!-- Footer -->
-      <AppFooter />
+      <AppFooter />    
     </div>   
+  </div>
 </template>
 
 <script>
-// Import the Firebase functions and components
+// Import Firebase functions and components
 import { onAuthStateChanged } from 'firebase/auth'; 
-import { auth } from '@/firebaseConfig'; // Assuming you have Firebase configured in 'firebase.js'
+import { auth } from '@/firebaseConfig'; // Adjust this path as necessary
 import { mapState, mapActions } from 'vuex'; // Import Vuex helpers
 
 import AppHeader from '@/components/Header.vue';
-import AppFooter from '@/components/Footer.vue';
+import AppFooter from '@/components/AppFooter.vue'; // AppFooter is imported   
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppFooter,
+    AppFooter, // Importing this but not using it in the template was an oversight
   },
   data() {
     return {
-      isFirebaseReady: false, // State to track Firebase initialization
+      isFirebaseReady: false, // Tracks Firebase initialization
     };
   },
-  // Access Vuex state using mapState
   computed: {
-    ...mapState('user', ['isAuthenticated']), // Using 'user' namespace if the module is namespaced
+    ...mapState('user', ['isAuthenticated']), // Access 'isAuthenticated' from the 'user' Vuex state
   },
-  // Access Vuex actions using mapActions
   methods: {
-    ...mapActions('user', ['fetchUser', 'signOut']), // Using 'user' namespace
+    ...mapActions('user', ['fetchUser', 'signOut']), // Map Vuex actions from 'user' module
   },
-  // Firebase authentication listener
   created() {
-    onAuthStateChanged(auth, user => {
+    // Firebase authentication listener
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.fetchUser(user); // Fetch user info via Vuex action
+        this.fetchUser(user); // Fetch user data via Vuex action
       } else {
-        this.$store.commit('user/setAuthenticated', false); // Commit directly to the 'user' Vuex module
+        this.$store.commit('user/setAuthenticated', false); // Commit unauthenticated state to Vuex
       }
       this.isFirebaseReady = true; // Mark Firebase as initialized
     });
