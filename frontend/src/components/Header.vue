@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="site-title">
-      <router-link to="/">Nature's Crate</router-link>
+      <router-link to="/">Nature's Crates</router-link>
     </div>
     <nav>
       <ul>

@@ -2,7 +2,7 @@
   <div class="home-page">
     <h1>Welcome to Our Platform</h1>
     <product-search />
-    
+
     <section class="promo-section">
       <h2>Latest Promotions</h2>
       <!-- Promotional content or featured products -->
@@ -14,15 +14,16 @@
 
     <real-time-content />
 
-    <button @click="login">Sign in with Google</button>
+    <button @click="signIn">Sign In</button>
+    <p v-if="isAuthenticated">Welcome, {{ userInfo.displayName }}!</p>
   </div>
 </template>
 
 <script>
 import ProductSearch from './ProductSearch.vue';
 import RealTimeContent from './RealTimeContent.vue';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../firebase';
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'HomePage',
   components: {
@@ -37,18 +38,12 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapState('user', ['userInfo', 'isAuthenticated']),
+  },
   methods: {
-    login() {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          console.log(result.user);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }
+    ...mapActions('user', ['signIn']),
+  },
 };
 </script>
 

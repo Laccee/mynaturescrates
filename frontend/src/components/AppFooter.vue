@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-      <p>&copy; 2024 Nature's Crate. All rights reserved.</p>
+      <p>&copy; 2024 Nature's Crates. All rights reserved.</p>
     </footer>
   </template>
   

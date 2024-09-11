@@ -1,10 +1,12 @@
 import pandas as pd
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Import CORS
 from ml_model import ProductRecommender  # Import the recommendation model
 from delivery_model import DeliveryTimePredictor, predict_delivery_time  # Import from delivery_model
 from firebase_config import db  # Import Firebase configuration
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:8080"}})  # Configure CORS
 
 # Initialize the recommendation and prediction models
 recommender = ProductRecommender()
